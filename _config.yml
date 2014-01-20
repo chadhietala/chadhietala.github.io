@@ -1,6 +1,6 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: Idiomatic Developments
+description: Thoughts on frontend engineering and other cool stuff
+meta_description: "Chad Hietala's thoughts on frontend development and other web technologies"
 
 markdown: redcarpet
 pygments: true
@@ -8,5 +8,5 @@ logo: false
 paginate: 15
 
 # Details for the RSS feed generator
-url:            'blog url'
-author:         'Your Name'
+url:            'www.chadhietala.com'
+author:         'Chad Hietala'
