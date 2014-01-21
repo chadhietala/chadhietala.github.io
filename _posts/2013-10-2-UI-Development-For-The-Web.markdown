@@ -2,7 +2,7 @@
 layout: post
 title:  "UI Development For The Web"
 date:   2013-10-2 10:18:00
-categories: jekyll update
+categories: application architecture, javascript
 ---
 
 For about the past 3 years I’ve done a lot research and development in the realm of frontend application architecture with a strong focus on JavaScript. As more and more logic moves to the client it will become more and more important to have complete architectures in place. In more recent times, when people here the words “JavaScript Architecture” they automatically think of Model-View-Controller(MVC). In it’s purest form MVC is not a complete architecture and it is more of pattern. The reason why it’s not a complete architecture is that it does not prescribe a solution for “every thing” you would want to do in a system. Lets look how GUI development has evolved in the past 40 years or so.
