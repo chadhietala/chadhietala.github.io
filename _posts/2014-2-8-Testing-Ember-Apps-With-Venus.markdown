@@ -177,7 +177,7 @@ In the example we create a new `Ember.Container` then register our `BirdControll
 
 ## Wrap Up
 
-So hopefully I shined so light on how you can pretty much do unit and integration testing very easily and very quickly, as opposed to other ways of testing. I also hope that you learned a little bit on how objects get strung together in Ember through it's container.
+So hopefully I shined so light on how you can easily run unit and integration tests with Venus. I also hope that you learned a little bit on how objects get strung together in Ember through it's container. Testing large javascript applications can be a huge pain, but with the right tools, it's almost fun.
 
 
 
