@@ -12,13 +12,13 @@ At LinkedIn we use this test runner [Venus](http://www.venusjs.org/), which allo
 
 Beyond unit testing we use [Capybara](https://github.com/jnicklas/capybara) for all of our integration testing.  Prior to releases a regression is preformed on the service that is about to be deployed. This regression testing normally gets scheduled as an overnight job by our QA counter parts. It's extremely time consuming and energy intensive.
 
-That all being said, a lot of new products or refreshes that we have recently released have been JavaScript MVC applications. This poses new challenges in integration testing but has a large upside in terms of time to results and energy consumed in testing.
+That all being said, a lot of new products or refreshes that we have recently released have been JavaScript MVC applications. This poses new challenges in integration testing, but has a large upside in terms of time to results and energy consumed in testing.
 
 ## A Word About Venus
 
-As I mentioned above we use Venus to write all of our unit tests. The largest advantage of Venus is that configuring is super easy and super flexible. It achieves this through annotations at the top of your test file. Some examples of this are `@venus-library`, `@venus-include`, `@venus-include-group`,  and `@venus-fixture`. These just tell Venus what testing framework you want to use, what files to include in the test and if you need any specific fixture html for the test. The `@venus-include-group` maps to an object of files that you can place in your `.venusconfig` file.
+As I mentioned above we use Venus to write all of our unit tests. The largest advantage of Venus is that configuring is super easy and super flexible. It achieves this through annotations at the top of your test file. Some examples of these are `@venus-library`, `@venus-include`, `@venus-include-group`,  and `@venus-fixture`. These just tell Venus what testing framework you want to use, what files to include in the test, and if you need any specific fixture html for the test. The `@venus-include-group` maps to an object of files that you can place in your `.venus` file.
 
-Once you have your annotations setup you just run the `venus run -t path/to/test/test.spec.js` command from your terminal. This will spin up a server and address you can view your tests. You can also run `venus run -t path/to/test/test.spec.js -e ghost` to just run the tests through phantom.js. For more information about running your tests across different environments and other configurations, [check out the documentation](https://venusjs.readthedocs.org/en/latest/tutorials/environments.html#selenium-grid).
+Once you have your annotations setup you just run the `venus run -t path/to/test/test.spec.js` command from your terminal. This will spin up a server and give you an address where you can view your tests. You can also run `venus run -t path/to/test/test.spec.js -e ghost` to just run the tests through phantom.js. For more information about running your tests across different environments and other configurations [check out the documentation](https://venusjs.readthedocs.org/en/latest/tutorials/environments.html#selenium-grid).
 
 ## Ember Testing
 
@@ -62,13 +62,13 @@ As you can see, we have the Venus annotations at the top that tells Venus what t
 
 By making the tests promise based, we don't have to do stuff like `wait(5)` to wait 5 seconds to ensure that a response has come back. Take that time and multiple it over thousands of tests and you have some serious time and energy savings. Like I mentioned these methods are similar to Capybara. So `visit('/')` goes to the index route in your application. The `andThen()` function is actually async although it looks synchronous. It does this by latching onto a global promise object that the adapter creates if it exists. The `find()` call looks inside of the `App.rootElement` and is essentially jQuery's `.find()` method. Ember testing ships with `vist()`, `find()`, `fillIn()`, `click()`, and `keyEvent()`, but Ember provides an easy way to [write your own async helpers](http://emberjs.com/guides/testing/integration/#toc_creating-your-own-test-helpers)
 
-The other interesting parts here are `App.rootElement`, `App.setupForTesting()`, `App.injectTestHelpers`, and `App.reset` in the `beforeEach()` hook.
+The other interesting parts here are `App.rootElement`, `App.setupForTesting()`, `App.injectTestHelpers()`, and `App.reset()` in the `beforeEach()` hook.
 
 <dl>
   <dt><strong>App.rootElement</strong></dt>
   <dd>Allows you to tell Ember where you want to inject the App. As mentioned before, this is also the context that the <code>find()</code> function will use.</dd>
   <dt><strong>App.setupForTesting</strong></dt>
-  <dd>Defers the readiness of the application by setting the router's location to <code>'none'</code>. On <code>visit()</code> of a route the application's "readiness" is advanced and then passed url is set.</dd>
+  <dd>Defers the readiness of the application by setting the router's location to <code>'none'</code>. On <code>visit()</code> of a route the application's "readiness" is advanced and then the passed in url is set.</dd>
   <dt><strong>App.injectTestHelpers</strong></dt>
   <dd>All this does is inject the test helpers into the global scope.</dd>
   <dt><strong>App.reset</strong></dt>
@@ -113,9 +113,9 @@ describe( 'Person', function () {
 });
 {% endhighlight %}
 
-This example is pretty straight forward example. I have a `Person` object that has `firstName` and `lastName` on it. I want to make sure that when a make a get call to `fullName` that the computed property returns the concatenated version of `firstName` and `lastName`.
+This example is pretty straight forward example. I have a `Person` object that has `firstName` and `lastName` on it. I want to make sure that when a make a get call to `fullName` that the computed property returns the concatenated version of `firstName` and `lastName`. Not too interesting.
 
-What happens when your controller has a dependency on another controller through the `needs` property? The `needs` property is basically is sugared syntax for asking the container for a specific controller instance in memory. What is the container you may ask? Ember registers modules into an [inversion of control container](http://martinfowler.com/articles/injection.html) to inject dependencies into other objects. This allows for the modules to depend on other modules without coupling it. Since the instances are not directly on the object, rather injected at runtime, we can mock these cross module dependencies very easily. Let's look at an example on how we would test this.
+What happens when your controller has a dependency on another controller through the `needs` property? The `needs` property is basically is sugared syntax for asking the container for a specific controller instance in memory. What is the container you may ask? Ember registers modules into an [inversion of control container](http://martinfowler.com/articles/injection.html) can be used to inject dependencies into other objects. This allows for the modules to depend on other modules without coupling them. Since the instances are not directly on the object, rather injected at object creation time, we can mock these cross module dependencies very easily. Let's look at an example on how we would test this.
 
 **Implementation**
 {% highlight javascript %}
@@ -153,7 +153,7 @@ describe( 'BirdController', function () {
     nestSpy = sinon.spy();
     container.register( 'controller:bird', App.BirdController );
     container.register( 'controller:nest', Ember.Object.create({
-      arrive: incrementSpy
+      arrive: nestSpy
     }));
     bird = container.lookup( 'controller:bird' );
     nest = container.lookup( 'controller:nest' );
@@ -171,7 +171,7 @@ describe( 'BirdController', function () {
 });
 {% endhighlight %}
 
-So here we have a `BirdController` that needs access to the `NestController` to let others know that the nest is occupied. When an inversion of control container is used, an instance of the container in which the module came from is place on that module. This is so that the module can ask the container to inject other objects which preside in the container on to the asking object. In our test we can mock just that by creating our own container and registering objects to it.
+So here we have a `BirdController` that needs access to the `NestController` to set it's occupancy to true. When an inversion of control container is used, an instance of the container in which the module came from is placed on that module. This is so that the module can ask the container to inject other modules which preside in the container on to the asking module. In our test we can mock just that by creating our own container and registering modules to it.
 
 In the example we create a new `Ember.Container` then register our `BirdController` and a mock `Ember.Object` to the container. We then pull both out of the container and assign them to `bird` and `nest` respectively. At the point where we ask the container for the specific controller types, they are now containerized, meaning the `needs` call of our `BirdController` will look into our testing container and resolve to our `NestController` mock. We can then right our test as expected and we can assert that the arrive method is indeed being called.
 
