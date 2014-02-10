@@ -37,6 +37,8 @@ App.rootElement = '#test-host';
 App.setupForTesting();
 App.injectTestHelpers();
 
+App.Test.adapter = Ember.Test.MochaAdapter.create();
+
 describe( 'App Integration Tests', function () {
 
   beforeEach(function () {
