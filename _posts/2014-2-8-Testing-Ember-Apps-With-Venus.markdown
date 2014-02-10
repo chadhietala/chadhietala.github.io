@@ -10,7 +10,7 @@ When I wrote my first Angular application 2 years ago I was blown away at it's a
 
 At LinkedIn we use this test runner [Venus](http://www.venusjs.org/), which allows us to very quickly run tests using any testing framework across a multitude of environments. This includes things like [Selenium Grid](http://docs.seleniumhq.org/docs/07_selenium_grid.jsp) and [Sauce Labs](https://saucelabs.com/). Generally speaking frontend developers are only responsible for writing unit tests for any javascript that is committed. This is regulated by a pre-commit hook.
 
-Beyond unit testing we use [Capybara](https://github.com/jnicklas/capybara) for all of our integration testing.  Prior to releases a regression is preformed on the service that is about to be deployed. These regressions testing normally get scheduled as an overnight job by our QA counter parts. It's extremely time consuming and energy intensive.
+Beyond unit testing we use [Capybara](https://github.com/jnicklas/capybara) for all of our integration testing.  Prior to releases a regression is preformed on the service that is about to be deployed. This regression testing normally get scheduled as an overnight job by our QA counter parts. It's extremely time consuming and energy intensive.
 
 That all being said, a lot of new products or refreshes that we have recently released have been JavaScript MVC applications. This poses new challenges in integration testing but has a large upside in terms of time to results and energy consumed in testing.
 
