@@ -123,7 +123,7 @@ What happens when your controller has a dependency on another controller through
 {% highlight javascript %}
 App.BirdController = Ember.Controller.extend({
   needs: [ 'nest' ],
-  nest: Ember.computed.alias( 'controllers.nest' )
+  nest: Ember.computed.alias( 'controllers.nest' ),
   actions: {
     flyHome: function ( track ) {
       var nest = this.get( 'nest' );
@@ -154,7 +154,7 @@ describe( 'BirdController', function () {
     container = new Ember.Container();
     nestSpy = sinon.spy();
     container.register( 'controller:bird', App.BirdController );
-    container.register( 'controller:nest', Ember.Object.create({
+    container.register( 'controller:nest', Ember.Object.extend({
       arrive: nestSpy
     }));
     bird = container.lookup( 'controller:bird' );
