@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Testing Ember Apps With Venus"
-date:   2014-2-7 8:35:00
+date:   2014-2-9 5:38:00
 categories: emberjs
 ---
 When I wrote my first Angular application 2 years ago I was blown away at it's awesome testing story. Although the whole dependency injection thing was a little weird at first, it proved to be one of the frameworks largest selling points. Ember on the other hand did not focus on a super solid testing story at first, but I would argue that Ember now has a better testing story than Angular. Not only does Ember have a dependency injection through the [container](http://www.slideshare.net/mixonic/containers-di), it also comes along with [Ember Testing](http://emberjs.com/guides/testing/integration/), which is a suite of tools for integration testing.
