@@ -26,17 +26,17 @@ So the solution to make this style of self XSS a little bit harder is to monkey 
 
 {% highlight javascript %}
 (function(){
-  var _z = console;
-  _z.log('%c PROBLEM?', 'background: url(https://pbs.twimg.com/profile_images/378800000051679172/2076c82024cd9f2fb0b10d1f50258d63.png); font-size: 171px; text-align: center; color: #bada55; text-shadow: rgba(0,0,0, .5) 0 3px 3px;');
+  var _c = console;
+  _c.log('%c PROBLEM?', 'background: url(https://pbs.twimg.com/profile_images/378800000051679172/2076c82024cd9f2fb0b10d1f50258d63.png); font-size: 171px; text-align: center; color: #bada55; text-shadow: rgba(0,0,0, .5) 0 3px 3px;');
   Object.defineProperty( window, 'console', {
     get : function(){
-      if( _z._commandLineAPI ){
+      if( _c._commandLineAPI ){
         throw 'We stopped you from comitting self-xss.';
       }
-      return _z;
+      return _c;
     },
     set : function(val){
-      _z = val;
+      _c = val;
     }
   });
 })();
