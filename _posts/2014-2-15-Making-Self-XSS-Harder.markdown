@@ -22,7 +22,7 @@ with ((window && window.console && window.console._commandLineAPI) || {}) {
 {% endhighlight %}
 
 ## Monkey Patch That Sucker
-So the solution to make this style of self XSS a little bit harder is to monkey patch the accesors to `_commandLineAPI`. Either copy and paste the javascript into the console or checkout [this jsbin](http://jsbin.com/vuqam/1), open the console, and try to execute some code.
+So the solution to make this style of self XSS a little bit harder is to monkey patch the accesors to `_commandLineAPI`. Either copy and paste the javascript into the console or checkout [this jsbin](http://jsbin.com/vuqam/2), open the console, and try to execute some code.
 
 {% highlight javascript %}
 (function(){
