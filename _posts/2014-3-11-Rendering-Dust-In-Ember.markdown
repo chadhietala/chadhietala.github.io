@@ -5,7 +5,7 @@ date:   2014-3-11 8:00:00
 categories: hacks
 ---
 
-At LinkedIn we use [Dust](http://linkedin.github.io/dustjs/) pretty heavily as our means of standardizing and sharing UI patterns. We have built up a pretty large library of these re-usable templates and it's not realistic for us to migrate all of these templates if we were to try out Ember. So what does one do in a case like this? On the one hand you have the option of forking Ember and re-writing parts of `Ember.View` and any associated Handlebar helpers. On the other hand you can just wrap the other template languages lookup and render method in Handlebar's helper. Neither approaches are pretty, but I feel that wrapping option is much more of a sustainable and opens up the option of migration over time.
+At LinkedIn we use [Dust](http://linkedin.github.io/dustjs/) pretty heavily as our means of standardizing and sharing UI patterns. We have built up a pretty large library of these re-usable templates and it's not realistic for us to migrate all of these templates if we were to try out Ember. So what does one do in a case like this? On the one hand you have the option of forking Ember and re-writing parts of `Ember.View` and any associated Handlebar helpers. On the other hand you can just wrap the other template languages lookup and render method in Handlebar's helper. Neither approaches are pretty, but I feel that wrapping option is much more of a sustainable one and opens up the option of migration over time.
 
 ##Wrapping Dust In Handlebars
 
