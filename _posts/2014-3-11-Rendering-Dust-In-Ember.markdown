@@ -27,7 +27,7 @@ Ember.Handlebars.helper('tl', function(templateName, options) {
 {% endraw %}
 {% endhighlight %}
 
-So why is this generally frowned upon? Well, for one you have two templating libraries on the page and secondly you're re-rendering, re-painting, and potentially [thrashing the layout](http://wilsonpage.co.uk/preventing-layout-thrashing/) on every data change. While the latter does not sound like big of a deal, reaching into the DOM and re-rendering everything when any of the data changes is expensive and is why things like [metamorph.js](https://github.com/tomhuda/metamorph.js/) exists. The only thing that may be in our favor here is that `dust.render` is asynchronous.
+So why is this generally frowned upon? Well, for one you have two templating libraries on the page and secondly you're re-rendering, re-painting, and potentially [thrashing the layout](http://wilsonpage.co.uk/preventing-layout-thrashing/) on every data change. While the latter does not sound like big of a deal, reaching into the DOM and re-rendering that template when any of the data changes is expensive and is why things like [metamorph.js](https://github.com/tomhuda/metamorph.js/) exists. The only thing that may be in our favor here is that `dust.render` is asynchronous.
 
 Luckily we can reduce this performance hit by using Ember's `unbound` Handlebars helper to tell Ember that the values in template do not need to be bound. In a lot of our re-usable templates we don't really have a need for the data in the templates to be bound. In the cases where we it would be nice for the template to update, we will be subjected to the performance hit.
 
