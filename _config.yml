@@ -3,7 +3,7 @@ description: Thoughts on frontend engineering and other things
 meta_description: "Chad Hietala's thoughts on frontend development and other web technologies"
 
 markdown: redcarpet
-pygments: true
+highlighter: true
 logo: false
 paginate: 15
 
