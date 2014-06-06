@@ -56,7 +56,7 @@ Person.greet('Hola') // Logs Person.greet called with arguments: Hola
 
 ##monitorEvents() and unmonitorEvents()
 
-If you ever had to `console.log` streams of events say `keydown`, you can simplify things by just using `monitorEvents`.  This is a documented API but it's pretty awesome.
+If you ever had to `console.log` streams of events say `keydown`, you can simplify things by just using `monitorEvents`.  This is a [documented API](https://developer.chrome.com/devtools/docs/commandline-api#monitoreventsobject-events) but it's pretty awesome and no one really talks about it.
 
 ```
 monitorEvents(window, 'resize');
@@ -66,13 +66,13 @@ monitorEvents($('#message'), ['keyup', 'keydown']);
 monitorEvents($('#box'), 'touch');
 ```
 
-The first example will console all window resize events. The second uses the `$` console API to query the element then log any time a keyup or keydown event occurs. Finally the last one queries the item and then logs anytime any of the touch events occur.  There is a whole list of superset and subset of events the `monitorEvents` API covers.
+The first example will console all window resize events. The second uses the [`$` console API](https://developer.chrome.com/devtools/docs/commandline-api#selector) to query the element then log any time a keyup or keydown event occurs. Finally the last one queries the item and then logs anytime any of the touch events occur.  There is a whole [list of superset and subset of events](https://developer.chrome.com/devtools/docs/commandline-api#monitoreventsobject-events) the `monitorEvents` API covers.
 
 Like all of the API's above, `monitorEvents` has an `unmonitorEvents` to do exactly what you would expect.
 
 ##getEventListeners()
 
-This is another documented goodie that doesn't get much praise.  If you pass `getEventListeners` a node it will do a reverse lookup of all the events attached to that element.
+This is another [documented goodie](https://developer.chrome.com/devtools/docs/commandline-api#geteventlistenersobject) that doesn't get much praise.  If you pass `getEventListeners` a node it will do a reverse lookup of all the events attached to that node.
 
 ```js
 var bar = document.querySelector( '#bar' );
@@ -81,7 +81,7 @@ getEventListeners( bar );
 // [ { click: [ { listener: someFn, remove: someFn } ] }]
 ```
 
-This can save you a ton a time where you don't have a strutured way of setting up event listeners and you're getting some weird side effects because someone accidentially attached a listerner.
+This can save you a ton a time when you don't have a strutured way of scoping event listeners to other elements and somone has accidentally attached events to something they shouldn't have.
 
 ## Wrap Up 
 
