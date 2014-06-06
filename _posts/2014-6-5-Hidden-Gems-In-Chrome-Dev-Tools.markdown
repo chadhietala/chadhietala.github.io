@@ -20,7 +20,7 @@ var Person = {
     };
 };
 
-dubug( Person.greet );
+debug( Person.greet );
 
 Person.greet( 'Hi' ) // Will Pause
 ```
