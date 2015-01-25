@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Contributing To Open Source"
+date:   2015-1-25 10:18:00
+categories: oss
+---
+
+Lately I've been on a pretty long tear of open source contributions.  About 2 years ago I really didn't understand how to be effective at contributing. Since then I found something that has worked for me.  Here are some tips that I've found to be useful in my quest to being better about giving back to the projects I take advantage of.
+
+## Bottom Up
+A lot of the times you want to contribute to some big high profile project right out of the gate.  While this is ambiguous, I would suggest talking a much smaller bite and invert this.  Majority of software has dependencies and like that big high profile project, those dependencies probably could use some love as well.
+
+![OSS Dependency Tree](/assets/images/oss-tree.png "OSS Dependency Tree")
+
+What I've found to be most helpful is to start contributing at the leaf node of the high profile project. While you might not consider this to be the most glamorous work, that's not the point.  The point is that these low level dependencies are much more easy to reason about.  As you traverse the tree back to the high profile project, you begin to learn more about how the rest of the system is put together.
+
+## Start small
+
+When you take the bottom up approach the bugs are normally much smaller and less involved. For instance this was a bug I fixed in HTMLBars that allows alternative root node to be passed to `getElementById`.
+
+![getElementById Bug](/assets/images/getElmentById-bug.png "getElmentById Bug")
+
+Then there was much praise.
+
+![getElementById Bug Praise](/assets/images/getElmentById-bug-praise.png "getElmentById Bug Praise")
+
+Another way of looking at this work is that it is fundamental to making the high profile project work. It's important that these low level APIs be well designed and have great test coverage because it has the potential of some many downstream effects.
+
+## Have a cadence
+
+I normally try to knock out majority of my open source contributions in the morning. This is largely due to my commute which allows me to put aside roughly an hour and a half every day during the week.  I could look at cat videos or I could fix a couple bugs for some people. I've decided to side on making open source projects a little bit better every day.
+
