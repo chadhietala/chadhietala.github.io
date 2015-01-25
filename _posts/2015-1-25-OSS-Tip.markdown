@@ -24,7 +24,7 @@ Then there was much praise.
 
 ![getElementById Bug Praise](/assets/images/getElementById-bug-praise.png "getElementById Bug Praise")
 
-Another way of looking at this work is that it is fundamental to making the high profile project work. It's important that these low level APIs be well designed and have great test coverage because it has the potential of some many downstream effects.
+Another way of looking at this work is that it is fundamental to making the high profile project work. It's important that these low level APIs be well designed and have great test coverage, because of the potential of many downstream effects.
 
 ## Have a cadence
 
